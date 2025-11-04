@@ -1,0 +1,143 @@
+/* css/style.css */
+
+/* Customizações gerais */
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f9fa; /* Fundo claro para combinar com Bootstrap */
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.6rem;
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo sutil para o item de menu ativo */
+    border-radius: 5px;
+}
+
+/* Cartões (Cards) */
+.card {
+    border-radius: 0.75rem; /* Cantos mais arredondados para os cartões */
+    border: none; /* Remove borda padrão */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Sombra suave */
+}
+
+.card-header {
+    background-color: #fcfcfc;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+}
+
+/* Formulários */
+.form-control, .form-select {
+    border-radius: 0.5rem; /* Cantos arredondados para campos de formulário */
+}
+
+.btn {
+    border-radius: 0.5rem; /* Cantos arredondados para botões */
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+/* Tabelas */
+.table-responsive {
+    border-radius: 0.5rem;
+    overflow-x: auto; /* Garante responsividade em telas pequenas */
+}
+
+.table thead th {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+/* Badges de estoque */
+.badge {
+    padding: 0.5em 0.75em;
+    font-size: 0.8em;
+    border-radius: 0.35rem;
+}
+
+/* Estilo para Product Card no PDV */
+.products-grid .product-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.products-grid .product-card .card {
+    height: 100%; /* Garante que os cards tenham a mesma altura */
+}
+.products-grid .product-card.opacity-50 .card {
+    cursor: not-allowed !important;
+}
+.products-grid .product-card:not(.opacity-50):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para scrollbar customizada (opcional, pode não funcionar em todos os navegadores) */
+.overflow-auto::-webkit-scrollbar {
+    width: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Ajustes para login page */
+body.bg-light {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Gradiente de fundo */
+}
+.login-card {
+    border-radius: 15px;
+}
+
