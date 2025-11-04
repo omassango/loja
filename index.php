@@ -136,11 +136,15 @@ $page = $_GET['page'] ?? 'dashboard'; // Página padrão
                     <li class="nav-item"><a class="nav-link <?php echo ($page === 'inventory' ? 'active' : ''); ?>" href="index.php?page=inventory"><i class="fas fa-exchange-alt me-1"></i> Stock</a></li>
                     <li class="nav-item"><a class="nav-link <?php echo ($page === 'sales' ? 'active' : ''); ?>" href="index.php?page=sales"><i class="fas fa-shopping-cart me-1"></i> Vendas</a></li>
                     <li class="nav-item"><a class="nav-link <?php echo ($page === 'reports' ? 'active' : ''); ?>" href="index.php?page=reports"><i class="fas fa-chart-line me-1"></i> Relatórios</a></li>
+
                     <?php if ($current_role === 'Admin'): ?>
-                    <li class="nav-item">
-                    <a class="nav-link <?php echo ($page === 'users' ? 'active' : ''); ?>" href="index.php?page=users">
-                    <i class="fas fa-users me-1"></i> Utilizadores</a>
-                    </li><?php endif; ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo ($page === 'users' ? 'active' : ''); ?>" href="index.php?page=users">
+                                <i class="fas fa-users me-1"></i> Utilizadores
+                            </a>
+                        </li>
+                    <?php endif; ?>
+
                     <li class="nav-item"><a class="nav-link" href="index.php?action=logout"><i class="fas fa-sign-out-alt me-1"></i> Sair</a></li>
                 </ul>
             </div>

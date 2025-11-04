@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'create') {
         $username = trim($_POST['username']);
-        $password = $_POST['password'];
+        $password = trim($_POST['password']); // senha simples
         $role     = $_POST['role'];
         createUser($username, $password, $role);
     }
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id       = (int) $_POST['id'];
         $username = trim($_POST['username']);
         $role     = $_POST['role'];
-        $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
+        $password = !empty($_POST['password']) ? trim($_POST['password']) : null; // sem hash
         updateUser($id, $username, $password, $role);
     }
 }
@@ -51,7 +51,7 @@ $users = getAllUsers();
             <input type="text" name="username" class="form-control" placeholder="Nome de utilizador" required>
         </div>
         <div class="col-md-3">
-            <input type="password" name="password" class="form-control" placeholder="Senha" required>
+            <input type="text" name="password" class="form-control" placeholder="Senha" required>
         </div>
         <div class="col-md-3">
             <select name="role" class="form-select" required>
@@ -125,7 +125,7 @@ $users = getAllUsers();
             </div>
             <div class="mb-3">
                 <label class="form-label">Nova Senha (opcional)</label>
-                <input type="password" name="password" class="form-control">
+                <input type="text" name="password" class="form-control">
             </div>
             <div class="mb-3">
                 <label class="form-label">Função</label>
@@ -151,3 +151,4 @@ function editUser(id, username, role) {
     modal.show();
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
