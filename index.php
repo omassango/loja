@@ -145,6 +145,7 @@ $page = $_GET['page'] ?? 'dashboard'; // Página padrão
                         </li>
                     <?php endif; ?>
 
+
                     <li class="nav-item"><a class="nav-link" href="index.php?action=logout"><i class="fas fa-sign-out-alt me-1"></i> Sair</a></li>
                 </ul>
             </div>
@@ -171,9 +172,4 @@ $page = $_GET['page'] ?? 'dashboard'; // Página padrão
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<?php
-// Fecha a conexão com o banco de dados ao final
-if (isset($conn)) {
-    $conn->close();
-}
-?>
+

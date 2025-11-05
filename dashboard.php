@@ -89,7 +89,7 @@ $today_sales_amt   = function_exists('getTodaySalesAmount') ? getTodaySalesAmoun
 
 <!-- Pequeno rodapé com info de sessão -->
 <div class="text-muted small">
-    Sessão iniciada como <strong><?php echo htmlspecialchars($current_username); ?></strong>.
+    Sessão iniciada como <strong><?php echo htmlspecialchars($current_role); ?></strong>.
 </div>
 </main>
     </div>

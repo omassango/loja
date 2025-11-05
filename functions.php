@@ -4,6 +4,8 @@
 // =========================================
 
 include_once 'config/db.php';
+include_once 'auth.php';
+include_once 'functions.php';
 
 /**
  * Faz o login do utilizador.
@@ -117,4 +119,96 @@ function deleteUser($id) {
     $stmt->close();
 }
 
+// =============================
+// FUNÇÕES DE GESTÃO DE PRODUTOS
+// =============================
+
+// Adicionar produto
+function addProduct($data) {
+    global $conn;
+    $stmt = $conn->prepare("
+        INSERT INTO products 
+        (name, description, sku, cost_price, sale_price, category, unit, min_stock, current_stock, location, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+    ");
+    $stmt->bind_param(
+        "sssddssii s",
+        $data['name'],
+        $data['description'],
+        $data['sku'],
+        $data['cost_price'],
+        $data['sale_price'],
+        $data['category'],
+        $data['unit'],
+        $data['min_stock'],
+        $data['current_stock'],
+        $data['location']
+    );
+    return $stmt->execute();
+}
+
+// Atualizar produto
+function updateProduct($id, $data) {
+    global $conn;
+    $stmt = $conn->prepare("
+        UPDATE products
+        SET name=?, description=?, sku=?, cost_price=?, sale_price=?, category=?, unit=?, min_stock=?, current_stock=?, location=?
+        WHERE id=?
+    ");
+    $stmt->bind_param(
+        "sssddssii si",
+        $data['name'],
+        $data['description'],
+        $data['sku'],
+        $data['cost_price'],
+        $data['sale_price'],
+        $data['category'],
+        $data['unit'],
+        $data['min_stock'],
+        $data['current_stock'],
+        $data['location'],
+        $id
+    );
+    return $stmt->execute();
+}
+
+// Eliminar produto
+function deleteProduct($id) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM products WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    return $stmt->execute();
+}
+
+// Buscar todos os produtos
+function getProducts() {
+    global $conn;
+    $result = $conn->query("SELECT * FROM products ORDER BY id DESC");
+    return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+}
+
+// --- FUNÇÕES DE PRODUTOS ---
+
+function getAllProducts() {
+    global $conn;
+    $sql = "SELECT * FROM products ORDER BY id DESC";
+    $result = $conn->query($sql);
+    return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+}
+
+function createProduct($name, $category, $quantity, $price, $description) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO products (name, category, quantity, price, description) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssids", $name, $category, $quantity, $price, $description);
+    return $stmt->execute();
+}
+
+function getProductById($id) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM products WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result && $result->num_rows > 0 ? $result->fetch_assoc() : null;
+}
 ?>
