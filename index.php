@@ -32,9 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// =====================================
-// Logout (encerra a sessão)
-// =====================================
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     $_SESSION = [];
 
@@ -100,9 +97,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true):
     exit(); // Sai após exibir o formulário de login
 endif;
 
-// =====================================
-// Utilizador autenticado - carrega a aplicação
-// =====================================
 $current_user_id = $_SESSION['user_id'];
 $current_username = $_SESSION['username'];
 $current_role = $_SESSION['role'];
@@ -145,8 +139,7 @@ $page = $_GET['page'] ?? 'dashboard'; // Página padrão
                         </li>
                     <?php endif; ?>
 
-
-                    <li class="nav-item"><a class="nav-link" href="index.php?action=logout"><i class="fas fa-sign-out-alt me-1"></i> Sair</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?action=logout"><i class="fas fa-sign-out-alt me-1"></i> Sair </a></li>
                 </ul>
             </div>
         </div>

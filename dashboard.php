@@ -20,7 +20,7 @@ $today_sales_amt   = function_exists('getTodaySalesAmount') ? getTodaySalesAmoun
 
 <div class="p-4 bg-white rounded-lg shadow-sm mb-4">
     <h1 class="h3 mb-2"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h1>
-    <p class="text-muted">Bem-vindo de volta, <strong><?php echo htmlspecialchars($current_username); ?></strong>! (<?php echo htmlspecialchars($current_role); ?>)</p>
+    <p class="text-muted">Bem-vindo, <strong><?php echo htmlspecialchars($current_username); ?></strong></p>
 </div>
 
 <div class="row mb-4">
